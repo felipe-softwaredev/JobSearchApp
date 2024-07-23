@@ -10,9 +10,10 @@
   },
   "type": "module",
   "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.4",
+    "@mui/material": "^5.16.4",
     "@prisma/client": "^5.16.1",
     "@types/bcryptjs": "^2.4.6",
     "axios": "^1.7.2",
