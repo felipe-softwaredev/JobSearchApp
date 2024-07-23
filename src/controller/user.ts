@@ -50,7 +50,7 @@ export async function user(username: string) {
     last_name: users?.last_name,
     email: users?.email,
     username: users?.username,
-    applications: users?.applications.map((application) => ({
+    applications: users?.applications.map((application: any) => ({
       applicationId: application.id,
       data: {
         jobId: application.jobId,
