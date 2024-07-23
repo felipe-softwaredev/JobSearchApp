@@ -28,9 +28,9 @@ export default function NavBar() {
     // }
   };
 
-  // useEffect(() => {
-  //   initFlowbite();
-  // }, []);
+  useEffect(() => {
+    initFlowbite();
+  }, []);
 
   // md:fixed md:w-full md:top-0 md:z-20
 
