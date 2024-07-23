@@ -1,5 +1,5 @@
 export default class JoblyAPI {
-  static baseURL = process.env.API_URL;
+  static baseURL = 'http://localhost:3000/api';
 
   static async findAll(endpoint: string) {
     const response = await fetch(`${this.baseURL}/${endpoint}`, {

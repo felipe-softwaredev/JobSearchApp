@@ -22,7 +22,7 @@ export default function ApplicationList() {
 
   return (
     <>
-      {context?.applications ? (
+      {context?.applications && context.applications.length > 0 ? (
         <>
           <h1 className="text-white text-4xl text-center">
             Your job applications:
