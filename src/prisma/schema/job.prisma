@@ -1,0 +1,9 @@
+model Job {
+    id             Int                 @id @default(autoincrement())
+    title          String
+    salary         Int?
+    equity         Int?
+    applicants     ApplicatonsOnJobs[]
+    companyHandle  Company             @relation(fields: [company_handle], references: [handle], onDelete: Cascade)
+    company_handle String
+}

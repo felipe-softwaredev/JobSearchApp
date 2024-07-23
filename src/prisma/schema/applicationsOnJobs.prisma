@@ -1,0 +1,8 @@
+model ApplicatonsOnJobs {
+    id         Int       @id @default(autoincrement())
+    applicant  String
+    jobId      Int
+    createddAt DateTime? @default(now())
+    user       User      @relation(fields: [applicant], references: [username], onDelete: Cascade)
+    job        Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+}

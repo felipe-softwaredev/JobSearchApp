@@ -1,0 +1,8 @@
+model Company {
+    handle        String  @id
+    name          String? @unique
+    num_employees Int?
+    description   String?
+    logo_url      String?
+    jobs          Job[]
+}
