@@ -31,9 +31,10 @@ export default function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setAlert(true);
+    setAlertMSG('Loading...');
     const response = await JoblyAPI.login(formData);
     if (response.status === 200) {
-      setAlert(true);
       setAlertMSG('Redirecting...');
       router.push('/home');
     } else if (response.status === 401) {

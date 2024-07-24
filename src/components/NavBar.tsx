@@ -27,11 +27,11 @@ export default function NavBar() {
     menu && menu.classList.toggle('hidden');
   };
 
-  // useEffect(() => {
-  //   if (process.title === 'browser') {
-  //     initFlowbite();
-  //   }
-  // }, [process]);
+  useEffect(() => {
+    if (process.title === 'browser') {
+      initFlowbite();
+    }
+  }, [process]);
 
   return (
     <nav className="bg-white p-4">

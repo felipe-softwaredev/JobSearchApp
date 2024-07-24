@@ -21,13 +21,6 @@ export async function middleware(request: NextRequest) {
   }
 }
 
-// export const config = {
-//   matcher: [
-//     '/((?!login|register|api|_next/static|_next/image|favicon.ico|not-found|$).*)',
-//   ],
-//   matcher: ['/api/user', 'api/company/', 'api/application', 'api/job'],
-// };
-
 export const config = {
   matcher: [
     '/api/user',
