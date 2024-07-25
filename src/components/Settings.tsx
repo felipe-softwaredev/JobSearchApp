@@ -17,7 +17,9 @@ export default function UserSettings() {
     newPWD: string;
   };
   const [formData, setFormData] = useState<newPwdForm>(pwdForm);
-  const [msg, setMsg] = useState<string | null>(null);
+
+  const [alert, setAlert] = useState<boolean>(false);
+  const [alertMSG, setAlertMSG] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,17 +31,15 @@ export default function UserSettings() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setAlert(true);
+    setAlertMSG('Authenticating...');
     console.log(formData);
     const response = await JoblyAPI.update(
       `user/${context?.currentUser?.username}`,
       formData
     );
-    if (response.status === 200) {
-      const res = await response.json();
-      setMsg(res.message);
-    } else if (response.status === 401) {
-      console.log(await response.json());
-    }
+    const res = await response.json();
+    setAlertMSG(res.message);
   };
 
   return (
@@ -85,6 +85,32 @@ export default function UserSettings() {
                 />
               </div>
             </div>
+            {alert && (
+              <div
+                className="bg-purple-100 border-l-4 border-purple-500 text-purple-700 p-2  m-auto rounded relative"
+                role="alert"
+              >
+                <div className="flex justify-end">
+                  <span
+                    className=" top-0 bottom-0 right-0  "
+                    onClick={() => {
+                      setAlert(false), setAlertMSG('');
+                    }}
+                  >
+                    <svg
+                      className="fill-current h-6 w-6 text-purple-500"
+                      role="button"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <title>Close</title>
+                      <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                    </svg>
+                  </span>
+                </div>
+                <p className="">{alertMSG}</p>
+              </div>
+            )}
             <div className="flex justify-center my-5">
               <button
                 className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-auto w-fit"
