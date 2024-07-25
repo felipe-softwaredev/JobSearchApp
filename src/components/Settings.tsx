@@ -68,7 +68,7 @@ export default function UserSettings() {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="rounded w-3/4 m-auto"
+                  className="rounded w-3/4 m-auto text-black"
                 />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 px-6">
@@ -81,7 +81,7 @@ export default function UserSettings() {
                   name="newPWD"
                   value={formData.newPWD}
                   onChange={handleChange}
-                  className="rounded w-3/4 m-auto"
+                  className="rounded w-3/4 m-auto text-black"
                 />
               </div>
             </div>
