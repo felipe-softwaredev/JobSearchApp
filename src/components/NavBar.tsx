@@ -28,10 +28,8 @@ export default function NavBar() {
   };
 
   useEffect(() => {
-    if (process.title === 'browser') {
-      initFlowbite();
-    }
-  }, [process]);
+    initFlowbite();
+  }, []);
 
   return (
     <nav className="bg-white p-4">

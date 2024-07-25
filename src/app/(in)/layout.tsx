@@ -3,7 +3,12 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import JoblyAPI from '@/helpers/api';
 import { useAppContext } from '@/helpers/context';
-import NavBar from '@/components/NavBar';
+import dynamic from 'next/dynamic';
+
+const DynamicNavbar = dynamic(() => import('@/components/NavBar'), {
+  ssr: false,
+});
+
 export default function LoggedLayout({
   children,
 }: Readonly<{
@@ -38,7 +43,7 @@ export default function LoggedLayout({
     <main className="bg-slate-800 h-screen">
       {logged && (
         <>
-          <NavBar />
+          <DynamicNavbar />
           <div className="">{children}</div>
         </>
       )}

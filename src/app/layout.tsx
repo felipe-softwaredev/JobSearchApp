@@ -22,7 +22,6 @@ export default function RootLayout({
       <AppWrapper>
         <body className="inter.className" suppressHydrationWarning={true}>
           {children}
-          {/* <Script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js" /> */}
         </body>
       </AppWrapper>
     </html>
