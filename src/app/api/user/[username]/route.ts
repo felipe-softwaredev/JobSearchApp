@@ -44,7 +44,6 @@ export async function PATCH(request: NextRequest, { params }: params) {
         delete requestJSON.newPWD;
       }
     }
-    console.log(requestJSON);
     res = await updateUser(username, requestJSON);
     return NextResponse.json({ message: 'Password changed!' }, { status: 200 });
   } catch (err: any) {

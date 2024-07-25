@@ -31,19 +31,22 @@ export default function UserSettings() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setAlert(true);
     setAlertMSG('Authenticating...');
-    console.log(formData);
+    setAlert(true);
     const response = await JoblyAPI.update(
       `user/${context?.currentUser?.username}`,
       formData
     );
     const res = await response.json();
-    setAlertMSG(res.message);
+    if (response.status === 200) {
+      setAlertMSG(res.message);
+    } else if (response.status === 401) {
+      setAlertMSG('Current password is wrong');
+    }
   };
 
   return (
-    <div className="flex flex-col gap-3 w-1/2  m-auto text-white font-semibold mt-8 px-8 py-6">
+    <div className="flex flex-col gap-3  w-3/4 md:w-1/2  m-auto text-white font-semibold mt-8 px-8 py-6">
       <h4 className="text-xl">
         Name: {context?.currentUser?.first_name}{' '}
         {context?.currentUser?.last_name}
@@ -87,7 +90,7 @@ export default function UserSettings() {
             </div>
             {alert && (
               <div
-                className="bg-purple-100 border-l-4 border-purple-500 text-purple-700 p-2  m-auto rounded relative"
+                className="bg-purple-100 border-l-4 border-purple-500 text-purple-700 p-2  m-2 rounded relative"
                 role="alert"
               >
                 <div className="flex justify-end">
