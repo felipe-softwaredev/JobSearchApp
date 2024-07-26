@@ -35,14 +35,14 @@ export default function RegistrationForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setAlert(true);
+    setAlertMSG('Authenticating...');
     const response = await JoblyAPI.register(formData);
     if (response.status === 200) {
-      setAlert(true);
       setAlertMSG('Redirecting...');
       router.push('/home');
     } else if (response.status === 401) {
       const res = await response.json();
-      setAlert(true);
       setAlertMSG(res.error);
     }
   };
