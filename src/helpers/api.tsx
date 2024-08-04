@@ -1,5 +1,5 @@
 export default class JoblyAPI {
-  static baseURL = `https://findajobhere.vercel.app/api`;
+  static baseURL = process.env.NEXT_PUBLIC_API_URL;
 
   static async findAll(endpoint: string) {
     const response = await fetch(`${this.baseURL}/${endpoint}`, {
