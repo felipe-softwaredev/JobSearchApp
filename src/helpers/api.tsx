@@ -1,5 +1,5 @@
 export default class JoblyAPI {
-  static baseURL = process.env.NEXT_PUBLIC_API_URL;
+  static baseURL = process.env.NEXT_PUBLIC_VERCEL_URL;
 
   static async findAll(endpoint: string) {
     const response = await fetch(`${this.baseURL}/${endpoint}`, {
