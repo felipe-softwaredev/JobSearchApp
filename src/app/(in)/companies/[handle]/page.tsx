@@ -31,7 +31,6 @@ export default function Company() {
       const res = await JoblyAPI.findOne('company', param.handle);
       if (res.status === 200) {
         const response = await res.json();
-        console.log(response);
         setCompany(response);
       } else if (res.status === 401) {
         router.push('/login');
